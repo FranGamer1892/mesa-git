@@ -12,11 +12,11 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=24.1.0_devel.280224
+pkgver=24.1.0_devel.185495.1ba6ccc51a4.d41d8cd
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto' 'libxml2' 'libvdpau' 'libva' 'elfutils' 'libxrandr'
-                            'wayland-protocols' 'meson' 'ninja' 'glslang' 'directx-headers' 'python-ply'
+                            'wayland-protocols' 'meson' 'ninja' 'glslang' 'directx-headers' 'python-ply' 'rust' 'rust-bindgen'
 )
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
          'libomxil-bellagio' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 
@@ -150,7 +150,6 @@ build () {
        -D zstd=enabled \
        -D video-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc,av1dec,av1enc,vp9dec \
        -D buildtype=plain \
-       --wrap-mode=nofallback \
        -D prefix=/usr \
        -D sysconfdir=/etc
        
