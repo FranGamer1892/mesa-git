@@ -70,7 +70,7 @@ pkgbase = mesa-git
 	conflicts = mesa-vdpau
 	conflicts = vulkan-swrast
 	conflicts = mesa-libgl
-	source = mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main
+	source = mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#commit=4c73e529332d217de79f16659d24ea2dbfd1b3ab
 	source = LICENSE
 	md5sums = SKIP
 	md5sums = 5c65a0fe315dd347e09b1f2826a1df5a

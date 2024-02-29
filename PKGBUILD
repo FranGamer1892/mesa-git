@@ -12,7 +12,7 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=24.1.0_devel.185495.1ba6ccc51a4.d41d8cd
+pkgver=24.1.0_devel.185534.4c73e529332.d41d8cd
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto' 'libxml2' 'libvdpau' 'libva' 'elfutils' 'libxrandr'
@@ -28,7 +28,7 @@ provides=('mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layers' 'libva-mesa
 conflicts=('mesa' 'opencl-clover-mesa' 'opencl-rusticl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layers' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-swrast' 'mesa-libgl')
 url="https://www.mesa3d.org"
 license=('custom')
-source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main'
+source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#commit=4c73e529332d217de79f16659d24ea2dbfd1b3ab'
              'LICENSE'
 )
 md5sums=('SKIP'
@@ -118,6 +118,14 @@ prepare() {
 }
 
 build () {
+    # Auto-download Rust crates for NAK (removes extra code for crate handling)
+    _nak_crate="--force-fallback-for=syn"
+
+    # HACK: Remove crate .rlib files before build
+    # (This prevents build errors after a Rust update: https://github.com/mesonbuild/meson/issues/10706)
+    [ -d build/subprojects ] && find build/subprojects -iname "*.rlib" -delete
+    [ -d build/src/nouveau/compiler ] && find build/src/nouveau/compiler -iname "*.rlib" -delete
+
     meson setup mesa _build \
        -D b_ndebug=true \
        -D b_lto=false \
@@ -150,6 +158,8 @@ build () {
        -D zstd=enabled \
        -D video-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc,av1dec,av1enc,vp9dec \
        -D buildtype=plain \
+       --wrap-mode=nofallback \
+       ${_nak_crate} \
        -D prefix=/usr \
        -D sysconfdir=/etc
        
