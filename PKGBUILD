@@ -12,7 +12,7 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=24.1.0_devel.185534.4c73e529332.d41d8cd
+pkgver=24.1.0_devel.186023.2cd192f8799.d41d8cd
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto' 'libxml2' 'libvdpau' 'libva' 'elfutils' 'libxrandr'
@@ -28,7 +28,7 @@ provides=('mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layers' 'libva-mesa
 conflicts=('mesa' 'opencl-clover-mesa' 'opencl-rusticl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layers' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-swrast' 'mesa-libgl')
 url="https://www.mesa3d.org"
 license=('custom')
-source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#commit=4c73e529332d217de79f16659d24ea2dbfd1b3ab'
+source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#commit=2cd192f8799c8cc27cd76e3acae45e807aadd926'
              'LICENSE'
 )
 md5sums=('SKIP'
@@ -75,8 +75,8 @@ case $MESA_WHICH_LLVM in
         ;;
     4)
         # extra/llvm
-        makedepends+=(llvm=16.0.6 clang=16.0.6 libclc spirv-llvm-translator)
-        depends+=(llvm-libs=16.0.6)
+        makedepends+=(llvm=17.0.6 clang=17.0.6 libclc spirv-llvm-translator)
+        depends+=(llvm-libs=17.0.6)
         optdepends+=('clang: opencl' 'compiler-rt: opencl')
         ;;
     *)

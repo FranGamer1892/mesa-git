@@ -21,8 +21,8 @@ pkgbase = mesa-git
 	makedepends = python-ply
 	makedepends = rust
 	makedepends = rust-bindgen
-	makedepends = llvm=16.0.6
-	makedepends = clang=16.0.6
+	makedepends = llvm=17.0.6
+	makedepends = clang=17.0.6
 	makedepends = libclc
 	makedepends = spirv-llvm-translator
 	depends = libdrm
@@ -46,7 +46,7 @@ pkgbase = mesa-git
 	depends = libxcb
 	depends = glibc
 	depends = zlib
-	depends = llvm-libs=16.0.6
+	depends = llvm-libs=17.0.6
 	optdepends = opengl-man-pages: for the OpenGL API man pages
 	optdepends = clang: opencl
 	optdepends = compiler-rt: opencl
@@ -70,7 +70,7 @@ pkgbase = mesa-git
 	conflicts = mesa-vdpau
 	conflicts = vulkan-swrast
 	conflicts = mesa-libgl
-	source = mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#commit=4c73e529332d217de79f16659d24ea2dbfd1b3ab
+	source = mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#commit=2cd192f8799c8cc27cd76e3acae45e807aadd926
 	source = LICENSE
 	md5sums = SKIP
 	md5sums = 5c65a0fe315dd347e09b1f2826a1df5a
